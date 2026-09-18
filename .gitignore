@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+
+# Python / Django (backend in arrivo)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.sqlite3
+.env
+.env.*
+!.env.example
+staticfiles/
+media/
+
+# Node
+node_modules/
+dist/
+
+# Editor
+.vscode/
+.idea/
+
+# File di lavoro del mockup
+mockup/_shot.html
+mockup/_mobile.html
+mockup/_dbg.html
