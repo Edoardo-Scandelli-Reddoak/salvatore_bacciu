@@ -25,3 +25,6 @@ dist/
 mockup/_shot.html
 mockup/_mobile.html
 mockup/_dbg.html
+
+# Vercel
+.vercel
