@@ -38,9 +38,9 @@
   --t-micro: .75rem;
 
   /* --- spazio --- */
-  --gutter: clamp(20px, 4vw, 56px);
+  --gutter: clamp(20px, 4vw, 72px);
   --sezione: clamp(72px, 9vw, 132px);
-  --max: 1320px;
+  --max: 1600px;
   --max-testo: 60ch;
 
   /* --- forma --- */
@@ -393,8 +393,10 @@ h3 { font-size: var(--t-h3); letter-spacing: -.025em; font-weight: 700; }
 
 /* ==========================================================================
    SPLIT (esclusiva / stabilimento)
+   I blocchi a due colonne restano su una misura più stretta del contenitore:
+   oltre i ~1200px l'immagine diventerebbe sproporzionata rispetto al testo.
    ========================================================================== */
-.split { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(32px, 6vw, 84px); }
+.split { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(32px, 6vw, 84px); max-width: 1200px; margin-inline: auto; }
 .split__media { position: relative; border-radius: var(--r-l); overflow: hidden; aspect-ratio: 5 / 6; }
 .split__media img { width: 100%; height: 100%; }
 .split__testo { display: flex; flex-direction: column; gap: 18px; align-items: flex-start; }
@@ -472,7 +474,7 @@ h3 { font-size: var(--t-h3); letter-spacing: -.025em; font-weight: 700; }
    FAQ
    ========================================================================== */
 .faq { background: var(--sabbia-50); }
-.faq__layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(32px, 6vw, 76px); align-items: start; }
+.faq__layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(32px, 6vw, 76px); align-items: start; max-width: 1280px; margin-inline: auto; }
 .faq__lista { border-top: 1px solid var(--linea); }
 .faq details { border-bottom: 1px solid var(--linea); }
 .faq summary {
@@ -498,7 +500,7 @@ h3 { font-size: var(--t-h3); letter-spacing: -.025em; font-weight: 700; }
    CONTATTI
    ========================================================================== */
 .contatti { background: var(--sabbia-100); }
-.contatti__layout { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.contatti__layout { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; max-width: 1200px; margin-inline: auto; }
 .contatti h2 { max-width: 15ch; }
 .info-lista { display: flex; flex-direction: column; gap: 18px; margin-top: 30px; }
 .info-lista > div { display: flex; gap: 14px; align-items: flex-start; }
