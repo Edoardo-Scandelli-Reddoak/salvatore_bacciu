@@ -299,12 +299,18 @@ h3 { font-size: var(--t-h3); letter-spacing: -.025em; font-weight: 700; }
 
 /* ==========================================================================
    ESCURSIONI
+   La griglia si adatta al numero di pacchetti: due stanno affiancati,
+   con tre o quattro va a capo da sola senza toccare il markup.
    ========================================================================== */
 .escursioni { background: var(--sabbia-50); }
-.griglia-esc { display: grid; grid-template-columns: repeat(6, 1fr); gap: clamp(16px, 1.8vw, 24px); }
+.griglia-esc {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: clamp(18px, 2vw, 28px);
+  align-items: stretch;
+}
 
 .esc {
-  grid-column: span 2;
   display: flex; flex-direction: column;
   background: var(--bianco);
   border: 1px solid var(--linea);
@@ -313,16 +319,8 @@ h3 { font-size: var(--t-h3); letter-spacing: -.025em; font-weight: 700; }
   transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease);
 }
 .esc:hover { transform: translateY(-5px); box-shadow: var(--ombra-m); border-color: transparent; }
-.esc--grande { grid-column: span 6; flex-direction: row; }
-.esc--specchiata { flex-direction: row-reverse; }
-.esc--specchiata .esc__tag { left: auto; right: 14px; }
-.esc--grande .esc__media { flex: 0 0 54%; aspect-ratio: auto; }
-.esc--grande .esc__corpo { justify-content: center; padding: clamp(28px, 3.4vw, 52px); gap: 18px; }
-.esc--grande .esc__corpo h3 { font-size: clamp(1.6rem, 2.4vw, 2.1rem); letter-spacing: -.035em; font-weight: 800; }
-.esc--grande .esc__corpo p { font-size: var(--t-body); flex: 0; max-width: 46ch; }
 
-.esc__media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; margin: 8px; border-radius: 20px; }
-.esc--grande .esc__media { margin: 10px; }
+.esc__media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; margin: 9px; border-radius: 20px; }
 .esc__media img { width: 100%; height: 100%; transition: transform .8s var(--ease); }
 .esc:hover .esc__media img { transform: scale(1.05); }
 .esc__tag {
@@ -332,17 +330,27 @@ h3 { font-size: var(--t-h3); letter-spacing: -.025em; font-weight: 700; }
   padding: 7px 13px; border-radius: 999px;
 }
 .esc__tag--caldo { background: var(--blu-900); color: #fff; }
-.esc__corpo { padding: clamp(18px, 2vw, 26px); padding-top: 12px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
-.esc__corpo p { font-size: var(--t-small); color: var(--muted); flex: 1; }
-.esc__meta { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.esc__corpo {
+  padding: clamp(20px, 2.2vw, 32px); padding-top: clamp(14px, 1.4vw, 20px);
+  display: flex; flex-direction: column; gap: 14px; flex: 1;
+}
+.esc__corpo h3 { font-size: clamp(1.35rem, 1.9vw, 1.75rem); letter-spacing: -.035em; font-weight: 800; }
+.esc__corpo p { font-size: var(--t-body); color: var(--muted); max-width: 46ch; }
+
+/* la descrizione assorbe la differenza di altezza: i piedi restano allineati */
+.esc__meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
 .esc__meta li {
   font-size: var(--t-micro); font-weight: 600; color: var(--blu-700);
-  background: var(--azzurro-50); border-radius: 999px; padding: 5px 11px;
+  background: var(--azzurro-50); border-radius: 999px; padding: 6px 12px;
 }
-.esc__piede { display: flex; align-items: center; justify-content: space-between; gap: 14px; border-top: 1px solid var(--linea); padding-top: 16px; margin-top: 4px; }
+.esc__piede {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  border-top: 1px solid var(--linea); padding-top: 18px; margin-top: 4px;
+}
 .prezzo { display: flex; flex-direction: column; line-height: 1.15; }
 .prezzo small { font-size: var(--t-micro); color: var(--muted); font-weight: 600; }
-.prezzo b { font-size: 1.55rem; font-weight: 800; letter-spacing: -.04em; white-space: nowrap; }
+.prezzo b { font-size: 1.7rem; font-weight: 800; letter-spacing: -.04em; white-space: nowrap; }
 .prezzo span { font-size: var(--t-micro); color: var(--muted); }
 
 /* ==========================================================================
@@ -591,12 +599,6 @@ h3 { font-size: var(--t-h3); letter-spacing: -.025em; font-weight: 700; }
   .g-b { grid-column: span 2; }
   .barra-mobile { display: flex; }
   .whatsapp { bottom: 88px; }
-  .esc, .esc--grande { grid-column: span 6; }
-  .esc--grande, .esc--specchiata { flex-direction: column; }
-  .esc--specchiata .esc__tag { left: 14px; right: auto; }
-  .esc--grande .esc__media { flex: none; aspect-ratio: 4 / 3; }
-  .esc--grande .esc__corpo { padding: clamp(18px, 2vw, 26px); padding-top: 12px; }
-  .esc--grande .esc__corpo h3 { font-size: var(--t-h3); font-weight: 700; }
 }
 
 @media (max-width: 560px) {
