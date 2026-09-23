@@ -305,7 +305,10 @@ h3 { font-size: var(--t-h3); letter-spacing: -.025em; font-weight: 700; }
 .escursioni { background: var(--sabbia-50); }
 .griglia-esc {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  /* Due colonne esplicite: auto-fit lasciava una traccia vuota non collassata
+     su alcuni browser, con le card rimpicciolite e spazio morto a destra.
+     Con tre o quattro pacchetti si cambia questa sola riga. */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(18px, 2vw, 28px);
   align-items: stretch;
 }
@@ -572,6 +575,10 @@ h3 { font-size: var(--t-h3); letter-spacing: -.025em; font-weight: 700; }
   .rec__griglia { grid-template-columns: 1fr; }
   .faq__layout { grid-template-columns: 1fr; }
   .footer__top { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 760px) {
+  .griglia-esc { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 860px) {

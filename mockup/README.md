@@ -40,8 +40,8 @@ quindi nei titoli display si evitano.
   e servono solo a far vedere l'impaginato. Vanno rimpiazzate con il materiale dello studio.
 - **Nome e logo**: "Cala Brandinchi" è un segnaposto — da decidere insieme al dominio.
 - **Prezzi, orari, durate, numero di telefono, P.IVA**: valori di esempio.
-- **Offerte**: oggi sono due (gruppo ed esclusiva). I pacchetti esclusivi previsti per la prossima
-  stagione si aggiungeranno dal pannello, senza toccare il codice: la griglia regge anche 3 o 4 voci.
+- **Offerte**: oggi sono due (gruppo ed esclusiva). Quando arriveranno i pacchetti previsti per la
+  prossima stagione va cambiata una riga di CSS (`.griglia-esc`, numero di colonne).
 - **Recensioni**: testi di esempio.
 
 ## Mappatura verso Django
