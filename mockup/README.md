@@ -25,9 +25,9 @@ quindi nei titoli display si evitano.
 |---|---|
 | Hero + widget disponibilità | La prenotazione è il primo elemento della pagina, non un bottone in fondo |
 | Striscia fiducia | Le 4 obiezioni che bloccano l'acquisto (dove si parte, quanti siamo, cosa è incluso, come pago) |
-| Escursioni | 3 pacchetti + esclusiva, con prezzo "da" e posti residui |
+| Le due offerte | Escursione di gruppo (max 12) e gommone in esclusiva, con prezzo "da" e CTA |
 | La rotta | Itinerario a 5 tappe: risponde a "dove mi porti?" e vale molto per la SEO locale |
-| Gommone privato | Il prodotto a margine più alto, con CTA a preventivo |
+| Gommone in esclusiva | Il prodotto a margine più alto, approfondito con CTA a preventivo |
 | Lo stabilimento | Il vantaggio competitivo reale: si parte dalla spiaggia, non dal porto |
 | Galleria / video | Spazio per il materiale professionale già disponibile |
 | Recensioni | Prova sociale (testi dimostrativi, da collegare a Google Business Profile) |
@@ -40,6 +40,8 @@ quindi nei titoli display si evitano.
   e servono solo a far vedere l'impaginato. Vanno rimpiazzate con il materiale dello studio.
 - **Nome e logo**: "Cala Brandinchi" è un segnaposto — da decidere insieme al dominio.
 - **Prezzi, orari, durate, numero di telefono, P.IVA**: valori di esempio.
+- **Offerte**: oggi sono due (gruppo ed esclusiva). I pacchetti esclusivi previsti per la prossima
+  stagione si aggiungeranno dal pannello, senza toccare il codice: la griglia regge anche 3 o 4 voci.
 - **Recensioni**: testi di esempio.
 
 ## Mappatura verso Django

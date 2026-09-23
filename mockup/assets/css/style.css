@@ -314,6 +314,8 @@ h3 { font-size: var(--t-h3); letter-spacing: -.025em; font-weight: 700; }
 }
 .esc:hover { transform: translateY(-5px); box-shadow: var(--ombra-m); border-color: transparent; }
 .esc--grande { grid-column: span 6; flex-direction: row; }
+.esc--specchiata { flex-direction: row-reverse; }
+.esc--specchiata .esc__tag { left: auto; right: 14px; }
 .esc--grande .esc__media { flex: 0 0 54%; aspect-ratio: auto; }
 .esc--grande .esc__corpo { justify-content: center; padding: clamp(28px, 3.4vw, 52px); gap: 18px; }
 .esc--grande .esc__corpo h3 { font-size: clamp(1.6rem, 2.4vw, 2.1rem); letter-spacing: -.035em; font-weight: 800; }
@@ -590,7 +592,8 @@ h3 { font-size: var(--t-h3); letter-spacing: -.025em; font-weight: 700; }
   .barra-mobile { display: flex; }
   .whatsapp { bottom: 88px; }
   .esc, .esc--grande { grid-column: span 6; }
-  .esc--grande { flex-direction: column; }
+  .esc--grande, .esc--specchiata { flex-direction: column; }
+  .esc--specchiata .esc__tag { left: 14px; right: auto; }
   .esc--grande .esc__media { flex: none; aspect-ratio: 4 / 3; }
   .esc--grande .esc__corpo { padding: clamp(18px, 2vw, 26px); padding-top: 12px; }
   .esc--grande .esc__corpo h3 { font-size: var(--t-h3); font-weight: 700; }
