@@ -12,3 +12,4 @@ Da sostituire con il materiale fotografico e video di Salvatore.
 - `molara-03.jpg` — Olbia, isola di Molara (07).jpg · Gianni Careddu · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File%3AOlbia%2C_isola_di_Molara_%2807%29.jpg
 - `punta-molara.jpg` — Tavolara e Molara da Punta Molara, OT - panoramio.jpg · alvise79 · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File%3ATavolara_e_Molara_da_Punta_Molara%2C_OT_-_panoramio.jpg
 - `molara-isola.jpg` — Isola di Molara 2.jpg · Gaspar Torriero · CC BY 2.0 · https://commons.wikimedia.org/wiki/File%3AIsola_di_Molara_2.jpg
+- `hero-brandinchi.jpg` — Cala Brandinchi - Cerdeña - panoramio.jpg · Ramon Espiña Fernand… · CC BY-SA 3.0 · ritagliata in basso · https://commons.wikimedia.org/wiki/File%3ACala_Brandinchi_-_Cerde%C3%B1a_-_panoramio.jpg

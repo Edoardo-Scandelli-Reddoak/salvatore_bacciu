@@ -221,13 +221,14 @@ h3 { font-size: var(--t-h3); letter-spacing: -.025em; font-weight: 700; }
    ========================================================================== */
 .hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; isolation: isolate; }
 .hero__media { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
-.hero__media img { width: 100%; height: 100%; object-position: 50% 52%; animation: deriva 28s var(--ease) infinite alternate; }
+.hero__media img { width: 100%; height: 100%; object-position: 64% 50%; animation: deriva 28s var(--ease) infinite alternate; }
 @keyframes deriva { from { transform: scale(1.05); } to { transform: scale(1.13) translate3d(-1.5%, -1%, 0); } }
 @media (prefers-reduced-motion: reduce) { .hero__media img { animation: none; transform: scale(1.04); } }
 .hero__velo {
   position: absolute; inset: 0; z-index: -1;
   background:
-    linear-gradient(to top, rgba(11, 43, 69, .86) 0%, rgba(13, 58, 92, .5) 34%, rgba(46, 150, 198, .06) 66%, rgba(11, 43, 69, .3) 100%);
+    linear-gradient(to top, rgba(11, 43, 69, .88) 0%, rgba(11, 43, 69, .52) 38%, rgba(11, 43, 69, .1) 70%, rgba(11, 43, 69, .34) 100%),
+    linear-gradient(to right, rgba(11, 43, 69, .52) 0%, rgba(11, 43, 69, .16) 46%, rgba(11, 43, 69, 0) 72%);
 }
 
 .hero__inner { width: 100%; padding-top: 170px; padding-bottom: 44px; color: #fff; }
@@ -470,7 +471,10 @@ h3 { font-size: var(--t-h3); letter-spacing: -.025em; font-weight: 700; }
 .rec figcaption { font-size: var(--t-micro); color: var(--muted); font-weight: 600; }
 .rec figcaption b { color: var(--ink); display: block; font-size: var(--t-small); }
 .punteggio { display: flex; align-items: center; gap: 14px; }
+/* Plus Jakarta Sans disegna virgola e apostrofo con spalle molto larghe:
+   nei corpi grandi lasciano un buco, qui lo si recupera. */
 .vir { margin-inline: -.16em; }
+.ap { margin-inline: -.12em; }
 .punteggio b { font-size: 2.2rem; font-weight: 800; letter-spacing: -.045em; line-height: 1; color: var(--blu-700); }
 
 /* ==========================================================================
