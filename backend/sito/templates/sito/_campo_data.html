@@ -1,0 +1,20 @@
+{% comment %}
+  Campo data con calendario su misura (static/sito/js/prenotazione.js, classe Calendario).
+  Parametri: id (prefisso univoco), giu (True = il calendario si apre verso il basso).
+{% endcomment %}
+<div class="campo campo--data" data-calendario>
+  <label for="{{ id }}-btn">Data</label>
+  <button type="button" class="campo__valore" id="{{ id }}-btn" aria-haspopup="dialog" aria-expanded="false" aria-controls="{{ id }}-cal">Scegli la data</button>
+  <input type="hidden" id="{{ id }}" name="data">
+  <svg class="campo__chev" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M2.4 6.5h11.2M5.5 1.8v2.4M10.5 1.8v2.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+  <div class="calendario{% if giu %} calendario--giu{% endif %}" id="{{ id }}-cal" role="dialog" aria-label="Scegli la data" hidden>
+    <div class="calendario__testa">
+      <button type="button" class="calendario__nav" data-cal-prec aria-label="Mese precedente"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m12.5 4-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <strong data-cal-mese aria-live="polite"></strong>
+      <button type="button" class="calendario__nav" data-cal-succ aria-label="Mese successivo"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m7.5 4 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+    <div class="calendario__sett" aria-hidden="true"><span>L</span><span>M</span><span>M</span><span>G</span><span>V</span><span>S</span><span>D</span></div>
+    <div class="calendario__griglia" data-cal-griglia></div>
+    <p class="calendario__nota" data-cal-nota>Uscite dal 1° maggio al 30 settembre</p>
+  </div>
+</div>

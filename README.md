@@ -8,17 +8,18 @@ delle piattaforme di terze parti, e posizionamento organico su Google.
 
 | | |
 |---|---|
-| Fase attuale | proposta grafica della homepage |
-| Prossimo passo | spec e impianto del progetto Django |
+| Fase attuale | sito con prenotazione online e pannello prenotazioni, tutto in Django |
+| Prossimo passo | chiavi Stripe del cliente (test, poi live), email di conferma, informativa privacy |
 
 ## Struttura
 
 ```
-mockup/     proposta di homepage — HTML/CSS/JS statici, nessuna build
+backend/    il sito vero: homepage con prenotazione online + pannello + API (Django, deploy su Railway)
+mockup/     prima versione statica della homepage (Vercel), solo riferimento: non più aggiornata
 ```
 
-Vedi [`mockup/README.md`](mockup/README.md) per come aprirla, la direzione grafica
-e la mappatura verso i template Django.
+Vedi [`mockup/README.md`](mockup/README.md) per la homepage e
+[`backend/README.md`](backend/README.md) per regole di disponibilità, avvio in locale e deploy.
 
 ## Stack previsto
 
@@ -29,6 +30,5 @@ e la mappatura verso i template Django.
 
 ## Nota sui contenuti
 
-Tutto ciò che è nel mockup è **materiale di lavoro**: foto placeholder (Wikimedia Commons,
-attribuzioni in `mockup/assets/img/CREDITS.md`), prezzi, orari, recensioni e dati di contatto
-sono segnaposto da sostituire prima della messa online.
+Foto, logo, prezzi, orari e stagione sono quelli del cliente. Recensioni, telefono, email
+e P.IVA sono ancora segnaposto da sostituire prima della messa online.

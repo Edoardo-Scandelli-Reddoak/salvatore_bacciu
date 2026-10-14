@@ -1,5 +1,9 @@
 # Homepage — mockup statico
 
+> **Non più aggiornato.** Dal 07/10/2026 la homepage vive in Django: `backend/sito/`
+> (template, CSS, JS e immagini), con prezzi e orari presi dal pannello e la prenotazione
+> collegata all'API. Questo mockup resta come riferimento grafico e anteprima su Vercel.
+
 Proposta di homepage per il sito escursioni di Salvatore Bacciu (Cala Brandinchi, San Teodoro).
 È HTML/CSS/JS puro, senza build: serve a validare **direzione grafica, struttura e gerarchia dei contenuti**
 prima di scrivere il progetto Django.
@@ -25,22 +29,21 @@ quindi nei titoli display si evitano.
 |---|---|
 | Hero + widget disponibilità | La prenotazione è il primo elemento della pagina, non un bottone in fondo |
 | Striscia fiducia | Le 4 obiezioni che bloccano l'acquisto (dove si parte, quanti siamo, cosa è incluso, come pago) |
-| Le due offerte | Escursione di gruppo (max 12) e gommone in esclusiva, con prezzo "da" e CTA |
-| La rotta | Itinerario a 5 tappe: risponde a "dove mi porti?" e vale molto per la SEO locale |
+| Le offerte | Uscita del mattino (5 h, 80 €), del pomeriggio (4 h, 70 €) e gommone in esclusiva (prezzo su richiesta) |
+| La rotta | Partenza e rientro a Cala Brandinchi, in mezzo Tavolara, Molara, Capo Coda Cavallo: risponde a "dove mi porti?" e vale molto per la SEO locale |
 | Gommone in esclusiva | Il prodotto a margine più alto, approfondito con CTA a preventivo |
 | Lo stabilimento | Il vantaggio competitivo reale: si parte dalla spiaggia, non dal porto |
-| Galleria / video | Spazio per il materiale professionale già disponibile |
+| Galleria | Foto professionali del cliente, con lightbox (frecce, tastiera, swipe) |
 | Recensioni | Prova sociale (testi dimostrativi, da collegare a Google Business Profile) |
 | FAQ | Meno telefonate + schema FAQPage per Google |
 | Contatti | Mappa, WhatsApp, stagionalità |
 
 ## Da sostituire prima della messa online
 
-- **Foto**: le immagini in `assets/img/` vengono da Wikimedia Commons (vedi `assets/img/CREDITS.md`)
-  e servono solo a far vedere l'impaginato. Vanno rimpiazzate con il materiale dello studio.
-- **Nome e logo**: "Cala Brandinchi" è un segnaposto — da decidere insieme al dominio.
-- **Prezzi, orari, durate, numero di telefono, P.IVA**: valori di esempio.
-- **Offerte**: oggi sono due (gruppo ed esclusiva). Quando arriveranno i pacchetti previsti per la
+Foto e logo sono già quelli del cliente (vedi `assets/img/CREDITS.md`).
+
+- **Numero di telefono, email, P.IVA**: valori di esempio. Prezzi, orari, durate e stagione sono quelli comunicati dal cliente (07/10/2026).
+- **Offerte**: oggi sono tre (mattino, pomeriggio, esclusiva su richiesta). Quando arriveranno i pacchetti previsti per la
   prossima stagione va cambiata una riga di CSS (`.griglia-esc`, numero di colonne).
 - **Recensioni**: testi di esempio.
 

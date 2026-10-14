@@ -1,0 +1,187 @@
+/* Pannello prenotazioni — calendario, uscite, dashboard.
+   Usa le variabili colore di Unfold (--color-base-*, --color-primary-*) così segue tema chiaro/scuro. */
+
+.cb-pagina {
+  --cb-bordo: var(--color-base-200);
+  --cb-fondo: #fff;
+  --cb-fondo-2: var(--color-base-50);
+  --cb-testo: var(--color-base-900);
+  --cb-muted: var(--color-base-500);
+  --cb-libera: #16a34a;
+  --cb-libera-bg: #f0fdf4;
+  --cb-quasi: #d97706;
+  --cb-quasi-bg: #fffbeb;
+  --cb-piena: #dc2626;
+  --cb-piena-bg: #fef2f2;
+  --cb-chiusa: var(--color-base-400);
+  --cb-chiusa-bg: var(--color-base-100);
+  display: flex; flex-direction: column; gap: 18px; color: var(--cb-testo);
+}
+html.dark .cb-pagina {
+  --cb-bordo: var(--color-base-800);
+  --cb-fondo: var(--color-base-900);
+  --cb-fondo-2: var(--color-base-950);
+  --cb-testo: var(--color-base-100);
+  --cb-muted: var(--color-base-400);
+  --cb-libera-bg: rgba(22, 163, 74, .12);
+  --cb-quasi-bg: rgba(217, 119, 6, .12);
+  --cb-piena-bg: rgba(220, 38, 38, .12);
+  --cb-chiusa-bg: var(--color-base-800);
+}
+
+.cb-muted { color: var(--cb-muted); font-weight: 400; }
+.cb-aiuto { margin-top: -8px; }
+.cb-titolo { font-size: 1.25rem; font-weight: 700; letter-spacing: -.01em; margin: 0; }
+.cb-titolo--sezione { margin-top: 10px; font-size: 1.05rem; }
+
+/* --- barra strumenti e pulsanti --- */
+.cb-barra-strumenti { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.cb-nav-mese { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.cb-nav-mese .cb-titolo { min-width: 9.5em; text-align: center; }
+.cb-btn {
+  display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px;
+  border: 1px solid var(--cb-bordo); border-radius: 8px; background: var(--cb-fondo);
+  color: var(--cb-testo); font-weight: 600; font-size: .85rem; cursor: pointer; text-decoration: none;
+}
+.cb-btn:hover { border-color: var(--color-primary-400); }
+.cb-btn .material-symbols-outlined { font-size: 18px; }
+.cb-btn--icona { width: 36px; padding: 0; justify-content: center; }
+.cb-btn--primario { background: var(--color-primary-600); border-color: var(--color-primary-600); color: #fff; }
+.cb-btn--primario:hover { background: var(--color-primary-700); }
+
+.cb-legenda { display: flex; flex-wrap: wrap; gap: 14px; font-size: .8rem; color: var(--cb-muted); }
+.cb-legenda span { display: inline-flex; align-items: center; gap: 6px; }
+.cb-pallino { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.cb-pallino--libera { background: var(--cb-libera); }
+.cb-pallino--quasi { background: var(--cb-quasi); }
+.cb-pallino--piena { background: var(--cb-piena); }
+.cb-pallino--chiusa { background: var(--cb-chiusa); }
+
+.cb-tag {
+  display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+  padding: 2px 6px; border-radius: 5px; background: var(--cb-chiusa-bg); color: var(--cb-muted); vertical-align: middle;
+}
+.cb-tag--primary { background: var(--color-primary-100); color: var(--color-primary-700); }
+.cb-tag--danger { background: var(--cb-piena-bg); color: var(--cb-piena); }
+html.dark .cb-tag--primary { background: rgba(75, 149, 196, .2); color: var(--color-primary-300); }
+
+.cb-avviso { padding: 12px 14px; border-radius: 10px; background: var(--cb-quasi-bg); color: var(--cb-testo); border: 1px solid var(--cb-bordo); }
+.cb-avviso--chiusa { background: var(--cb-piena-bg); }
+
+/* --- griglia calendario --- */
+.cb-griglia-wrap { overflow-x: auto; border: 1px solid var(--cb-bordo); border-radius: 12px; background: var(--cb-fondo); }
+.cb-griglia { width: 100%; border-collapse: collapse; min-width: 640px; }
+.cb-griglia thead th {
+  text-align: left; font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; font-weight: 700;
+  padding: 10px 12px; border-bottom: 1px solid var(--cb-bordo); color: var(--cb-muted); background: var(--cb-fondo-2);
+}
+.cb-griglia tbody tr + tr > * { border-top: 1px solid var(--cb-bordo); }
+.cb-griglia td { padding: 6px; vertical-align: top; width: 42%; }
+.cb-col-giorno { width: 110px; padding: 10px 12px; text-align: left; vertical-align: top; white-space: nowrap; }
+.cb-giorno-sett { display: inline-block; width: 2.4em; color: var(--cb-muted); text-transform: capitalize; font-weight: 500; }
+.cb-giorno-num { font-size: 1.05rem; font-weight: 700; }
+.cb-col-giorno .cb-tag { display: table; margin-top: 4px; }
+.cb-weekend .cb-col-giorno { background: var(--cb-fondo-2); }
+.cb-oggi > * { background: var(--color-primary-50) !important; }
+html.dark .cb-oggi > * { background: rgba(23, 96, 143, .18) !important; }
+.cb-passato { opacity: .55; }
+
+.cb-cella {
+  display: flex; flex-direction: column; gap: 5px; padding: 8px 10px; border-radius: 8px;
+  border-left: 4px solid var(--cb-libera); background: var(--cb-libera-bg); color: inherit; text-decoration: none;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.cb-cella:hover { transform: translateY(-1px); box-shadow: 0 4px 14px -8px rgba(0, 0, 0, .35); }
+.cb-cella--quasi { border-left-color: var(--cb-quasi); background: var(--cb-quasi-bg); }
+.cb-cella--piena { border-left-color: var(--cb-piena); background: var(--cb-piena-bg); }
+.cb-cella--chiusa { border-left-color: var(--cb-chiusa); background: var(--cb-chiusa-bg); }
+.cb-cella--fuori { border-left-color: var(--cb-bordo); background: transparent; color: var(--cb-muted); }
+.cb-cella--fuori .cb-barra-riga { display: none; }
+.cb-cella-testa { display: flex; align-items: baseline; gap: 4px; font-size: .85rem; }
+.cb-conta {
+  margin-left: auto; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 10px; font-size: .72rem; font-weight: 700;
+  display: inline-grid; place-items: center; background: var(--cb-fondo); border: 1px solid var(--cb-bordo);
+}
+.cb-barra-riga { display: grid; grid-template-columns: 82px 1fr 64px; align-items: center; gap: 8px; font-size: .75rem; }
+.cb-barra-nome { color: var(--cb-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cb-barra-num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+.cb-barra { display: block; height: 6px; border-radius: 3px; background: var(--cb-bordo); overflow: hidden; }
+.cb-barra i { display: block; height: 100%; background: var(--color-primary-600); border-radius: 3px; }
+.cb-barra i.cb-sovra { background: var(--cb-piena); }
+.cb-barra--chiusa { background: repeating-linear-gradient(45deg, var(--cb-bordo) 0 4px, transparent 4px 8px); }
+.cb-barra--grande { height: 10px; border-radius: 5px; }
+
+/* --- dashboard --- */
+.cb-oggi-card { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.cb-card {
+  display: flex; flex-direction: column; gap: 4px; padding: 16px 18px; border-radius: 12px; border: 1px solid var(--cb-bordo);
+  border-left-width: 5px; color: inherit; text-decoration: none;
+}
+.cb-grande { font-size: 1.6rem; font-weight: 800; letter-spacing: -.02em; }
+.cb-link { margin-top: 6px; font-weight: 600; color: var(--color-primary-600); }
+html.dark .cb-link { color: var(--color-primary-300); }
+
+/* --- pagina uscita --- */
+.cb-riepilogo { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+.cb-riepilogo div { display: flex; flex-direction: column; gap: 2px; padding: 12px 14px; border: 1px solid var(--cb-bordo); border-radius: 10px; background: var(--cb-fondo); }
+.cb-riepilogo b { font-size: 1.2rem; }
+.cb-gommoni { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 16px; }
+.cb-gommone { display: flex; flex-direction: column; gap: 12px; padding: 16px; border: 1px solid var(--cb-bordo); border-radius: 12px; background: var(--cb-fondo); }
+.cb-gommone header { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.cb-gommone h3 { margin: 0; font-size: 1.05rem; font-weight: 700; }
+.cb-gommone-stato { display: flex; align-items: center; gap: 6px; color: var(--cb-muted); }
+.cb-gommone-stato b { color: var(--cb-testo); font-size: 1rem; }
+.cb-lista { width: 100%; border-collapse: collapse; font-size: .85rem; }
+.cb-lista th { text-align: left; font-size: .7rem; text-transform: uppercase; letter-spacing: .05em; color: var(--cb-muted); padding: 6px 8px; border-bottom: 1px solid var(--cb-bordo); }
+.cb-lista td { padding: 8px; border-bottom: 1px solid var(--cb-bordo); vertical-align: top; }
+.cb-lista a { color: inherit; }
+.cb-lista a:hover { color: var(--color-primary-600); }
+.cb-note { color: var(--cb-muted); max-width: 22ch; }
+.cb-vuoto { padding: 8px 0; }
+
+@media (max-width: 640px) {
+  .cb-gommoni { grid-template-columns: 1fr; }
+  .cb-barra-riga { grid-template-columns: 64px 1fr 56px; }
+}
+
+/* La lista d'imbarco si stampa pulita: solo i gommoni */
+@media print {
+  #nav-sidebar, header, nav, .cb-no-stampa, [x-data] > aside { display: none !important; }
+  .cb-gommoni { grid-template-columns: 1fr; }
+  .cb-gommone { break-inside: avoid; }
+}
+
+/* --- form prenotazione: controllo posti mentre si compila --- */
+.cb-verifica {
+  margin: 12px; padding: 14px 16px; border-radius: 10px; display: flex; flex-direction: column; gap: 6px;
+  border: 1px solid var(--color-base-200); background: var(--color-base-50); font-size: .85rem;
+}
+.cb-verifica.is-ok { border-color: #86efac; background: #f0fdf4; }
+.cb-verifica.is-errore { border-color: #fca5a5; background: #fef2f2; }
+.cb-verifica.is-avviso { border-color: #fcd34d; background: #fffbeb; }
+html.dark .cb-verifica { border-color: var(--color-base-700); background: var(--color-base-900); }
+html.dark .cb-verifica.is-ok { background: rgba(22, 163, 74, .12); }
+html.dark .cb-verifica.is-errore { background: rgba(220, 38, 38, .12); }
+html.dark .cb-verifica.is-avviso { background: rgba(217, 119, 6, .12); }
+.cb-verifica-titolo { font-weight: 700; margin: 0 0 4px; }
+.cb-verifica-riga { display: grid; grid-template-columns: 100px 1fr 60px; align-items: center; gap: 10px; }
+.cb-verifica-riga b { text-align: right; font-variant-numeric: tabular-nums; }
+.cb-verifica-riga .cb-barra { display: block; height: 6px; border-radius: 3px; background: var(--color-base-200); overflow: hidden; }
+.cb-verifica-riga .cb-barra i { display: block; height: 100%; background: var(--color-primary-600); }
+.cb-verifica-riga .cb-barra--chiusa { background: repeating-linear-gradient(45deg, var(--color-base-200) 0 4px, transparent 4px 8px); }
+.cb-verifica-esito { display: flex; align-items: flex-start; gap: 6px; margin: 6px 0 0; font-weight: 600; }
+.cb-verifica-esito .material-symbols-outlined { font-size: 18px; }
+.cb-verifica-esito--ok { color: #15803d; }
+.cb-verifica-esito--errore { color: #b91c1c; }
+.cb-verifica-esito--avviso { color: #b45309; }
+#id_persone[aria-invalid] { border-color: #dc2626 !important; box-shadow: 0 0 0 3px rgba(220, 38, 38, .15); }
+
+/* elenco prenotazioni: le colonne corte non vanno a capo */
+td.field-codice, td.field-data_uscita, td.field-uscita, td.field-gommone,
+td.field-telefono, td.field-prenotata_il, td.field-persone_display { white-space: nowrap; }
+
+/* intestazioni degli elenchi: niente numero di priorità dell'ordinamento (1, 2, 3…) */
+.sortpriority { display: none; }
+
+/* lista d'imbarco: prenotazione dal sito con pagamento non ancora concluso */
+.cb-in-attesa td { opacity: .6; }

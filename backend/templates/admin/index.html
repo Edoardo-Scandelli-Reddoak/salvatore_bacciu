@@ -1,0 +1,44 @@
+{% extends "admin/base.html" %}
+{# Home del pannello (Unfold): uscite di oggi + prossimi 14 giorni. Dati da prenotazioni.admin_views.dashboard_callback #}
+
+{% load i18n %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+    {% include "unfold/helpers/site_branding.html" %}
+{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+<div class="cb-pagina">
+  <div class="cb-barra-strumenti">
+    <h2 class="cb-titolo">Oggi, {{ oggi_label }}</h2>
+    <div class="cb-nav-mese">
+      <a class="cb-btn" href="{{ url_calendario }}"><span class="material-symbols-outlined">calendar_month</span>Calendario</a>
+      <a class="cb-btn cb-btn--primario" href="{{ url_nuova }}"><span class="material-symbols-outlined">add</span>Nuova prenotazione</a>
+    </div>
+  </div>
+
+  {% if not in_stagione %}
+    <div class="cb-avviso">Oggi siamo fuori stagione: dal sito si prenota dal 1° maggio al 30 settembre. Qui sotto trovi i primi giorni della prossima stagione.</div>
+  {% endif %}
+
+  {% if uscite_oggi %}
+  <div class="cb-oggi-card">
+    {% for u in uscite_oggi %}
+      <a class="cb-card cb-cella--{{ u.stato.livello }}" href="{{ u.url }}">
+        <span class="cb-muted">{{ u.stato.fascia.nome }} · {{ u.stato.fascia.orario }}</span>
+        <b class="cb-grande">{% if u.stato.chiusa %}Chiusa{% else %}{{ u.persone }} a bordo{% endif %}</b>
+        <span>{% if u.stato.chiusa %}{{ u.stato.motivo_chiusura }}{% else %}{{ u.stato.posti_liberi }} posti liberi · {{ u.stato.n_prenotazioni }} prenotazioni{% if u.da_incassare %} · da incassare {{ u.da_incassare|floatformat:"-2" }} €{% endif %}{% endif %}</span>
+        <span class="cb-link">Lista d'imbarco →</span>
+      </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <h2 class="cb-titolo cb-titolo--sezione">{{ titolo_periodo }}</h2>
+  {% include "admin/prenotazioni/_griglia.html" %}
+</div>
+{% endblock %}

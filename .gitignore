@@ -28,3 +28,6 @@ mockup/_dbg.html
 
 # Vercel
 .vercel
+
+# Log del server di sviluppo
+.runserver.log

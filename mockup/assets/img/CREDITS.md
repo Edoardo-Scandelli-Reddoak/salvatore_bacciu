@@ -1,15 +1,21 @@
-# Immagini placeholder (Wikimedia Commons)
+# Immagini
 
-Da sostituire con il materiale fotografico e video di Salvatore.
+Foto e logo forniti dal cliente (cartella Drive "Salvatore Bacciu - MATERIALE", ottobre 2026).
+Le foto sono esportate per il web (lato lungo 1000–2400 px, JPEG progressivo) e **senza metadati EXIF/GPS**.
 
-- `hero-tavolara.jpg` — Isola di Tavolara - Pano from Porto Istana 2026 06 (GT).jpg · Terragio67 · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File%3AIsola_di_Tavolara_-_Pano_from_Porto_Istana_2026_06_%28GT%29.jpg
-- `tavolara-01.jpg` — Isola di Tavolara (01).JPG · Gianni Careddu · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File%3AIsola_di_Tavolara_%2801%29.JPG
-- `tavolara-sud.jpg` — Tavolara from South.JPG · Mikołaj Kirschke · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File%3ATavolara_from_South.JPG
-- `brandinchi-01.jpg` — San Teodoro - Sardinia - 2017 - Cala Brandinchi.JPG · Benoît Prieur · CC0 · https://commons.wikimedia.org/wiki/File%3ASan_Teodoro_-_Sardinia_-_2017_-_Cala_Brandinchi.JPG
-- `brandinchi-02.jpg` — Sardinia Cala Brandinchi.jpg · Gaspar Torriero · CC BY-SA 2.0 · https://commons.wikimedia.org/wiki/File%3ASardinia_Cala_Brandinchi.jpg
-- `brandinchi-03.jpg` — Cala Brandinchi, Sardaigne - panoramio.jpg · Patrice Garcia · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File%3ACala_Brandinchi%2C_Sardaigne_-_panoramio.jpg
-- `molara-02.jpg` — Olbia, isola di Molara (05).jpg · Gianni Careddu · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File%3AOlbia%2C_isola_di_Molara_%2805%29.jpg
-- `molara-03.jpg` — Olbia, isola di Molara (07).jpg · Gianni Careddu · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File%3AOlbia%2C_isola_di_Molara_%2807%29.jpg
-- `punta-molara.jpg` — Tavolara e Molara da Punta Molara, OT - panoramio.jpg · alvise79 · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File%3ATavolara_e_Molara_da_Punta_Molara%2C_OT_-_panoramio.jpg
-- `molara-isola.jpg` — Isola di Molara 2.jpg · Gaspar Torriero · CC BY 2.0 · https://commons.wikimedia.org/wiki/File%3AIsola_di_Molara_2.jpg
-- `hero-brandinchi.jpg` — Cala Brandinchi - Cerdeña - panoramio.jpg · Ramon Espiña Fernand… · CC BY-SA 3.0 · ritagliata in basso · https://commons.wikimedia.org/wiki/File%3ACala_Brandinchi_-_Cerde%C3%B1a_-_panoramio.jpg
+| File | Originale |
+|---|---|
+| `hero-tavolara-gommoni.jpg` | IMG_3456, ritagliata a destra per lasciare i gommoni fuori dal titolo |
+| `uscita-mattino.jpg` | IMG_3474 |
+| `uscita-pomeriggio.jpg` | IMG_3467 |
+| `esclusiva-molara.jpg` | IMG_3459 |
+| `cala-brandinchi-alto.jpg` | IMG_3473 |
+| `rotta-molara.jpg` | IMG_3462 |
+| `galleria-navigazione.jpg` | IMG_3457 |
+| `galleria-grotta.jpg` | IMG_3482 |
+| `galleria-piscine.jpg` | IMG_3469 |
+| `galleria-arco.jpg` | IMG_3481 |
+| `galleria-delfino.jpg` | IMG_3452 |
+| `galleria-scia.jpg` | IMG_3464 |
+| `galleria-tavolara-lontano.jpg` | IMG_3470 |
+| `logo-bianco.png`, `logo-blu.png` | "Cala Brandinchi - Escursioni Bianco.png", ritagliato; la versione blu è ricolorata in `#0B2B45` |

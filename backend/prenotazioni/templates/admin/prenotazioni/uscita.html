@@ -1,0 +1,67 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+<div class="cb-pagina">
+  <div class="cb-barra-strumenti cb-no-stampa">
+    <div class="cb-nav-mese">
+      <a class="cb-btn cb-btn--icona" href="{{ url_giorno_prec }}" aria-label="Giorno precedente"><span class="material-symbols-outlined">chevron_left</span></a>
+      <a class="cb-btn cb-btn--icona" href="{{ url_giorno_succ }}" aria-label="Giorno successivo"><span class="material-symbols-outlined">chevron_right</span></a>
+      {% for a in altre_uscite %}<a class="cb-btn" href="{{ a.url }}">Vai al {{ a.fascia.nome|lower }}</a>{% endfor %}
+      <a class="cb-btn" href="{{ url_calendario }}">Calendario</a>
+    </div>
+    <div class="cb-nav-mese">
+      <button type="button" class="cb-btn" onclick="window.print()"><span class="material-symbols-outlined">print</span>Stampa lista</button>
+      {% if not uscita.chiusa %}<a class="cb-btn cb-btn--primario" href="{{ url_nuova }}"><span class="material-symbols-outlined">add</span>Nuova prenotazione</a>{% endif %}
+    </div>
+  </div>
+
+  <div class="cb-riepilogo">
+    <div><span class="cb-muted">Partenza</span><b>{{ fascia.orario }}</b></div>
+    <div><span class="cb-muted">Durata</span><b>{{ fascia.durata_ore }} ore</b></div>
+    <div><span class="cb-muted">A bordo</span><b>{{ persone_totali }} persone</b></div>
+    <div><span class="cb-muted">Posti liberi</span><b>{% if uscita.chiusa %}—{% else %}{{ uscita.posti_liberi }}{% endif %}</b></div>
+    <div><span class="cb-muted">Gruppo max prenotabile</span><b>{% if uscita.chiusa %}—{% else %}{{ uscita.max_persone }}{% endif %}</b></div>
+    <div><span class="cb-muted">Da incassare all'imbarco</span><b>{{ da_incassare|floatformat:"-2" }} €</b></div>
+  </div>
+
+  {% if uscita.chiusa %}
+    <div class="cb-avviso cb-avviso--chiusa">Uscita chiusa{% if uscita.motivo_chiusura %}: {{ uscita.motivo_chiusura }}{% endif %}. Dal sito non si può prenotare.</div>
+  {% endif %}
+
+  <div class="cb-gommoni">
+    {% for g in uscita.gommoni %}
+      <section class="cb-gommone">
+        <header>
+          <h3>{{ g.gommone.nome }}</h3>
+          <span class="cb-gommone-stato">
+            {% if g.chiuso %}<span class="cb-tag cb-tag--danger">chiuso</span>
+            {% elif not g.gommone.attivo %}<span class="cb-tag cb-tag--danger">disattivato</span>{% endif %}
+            {% if g.esclusiva %}<span class="cb-tag cb-tag--primary">esclusiva</span>{% endif %}
+            <b>{{ g.occupati }}/{{ g.capienza }}</b> + skipper{% if g.da_incassare %} · da incassare <b>{{ g.da_incassare|floatformat:"-2" }} €</b>{% endif %}
+          </span>
+        </header>
+        <span class="cb-barra cb-barra--grande"><i style="width: {{ g.percentuale }}%"{% if g.sovraccarico %} class="cb-sovra"{% endif %}></i></span>
+        {% if g.sovraccarico %}<p class="cb-avviso cb-avviso--chiusa">Oltre la capienza: sposta qualche prenotazione su un altro gommone.</p>{% endif %}
+        {% if g.prenotazioni %}
+          <table class="cb-lista">
+            <thead><tr><th>Cliente</th><th>Pers.</th><th>Telefono</th><th>Da incassare</th><th>Note</th></tr></thead>
+            <tbody>
+              {% for p in g.prenotazioni %}
+                <tr{% if p.in_attesa %} class="cb-in-attesa"{% endif %}>
+                  <td><a href="{% url 'admin:prenotazioni_prenotazione_change' p.pk %}"><b>{{ p.nome }}</b></a> <span class="cb-muted">{{ p.codice }}</span>{% if p.esclusiva %} <span class="cb-tag cb-tag--primary">esclusiva</span>{% endif %}</td>
+                  <td>{{ p.persone }}</td>
+                  <td>{% if p.telefono %}<a href="tel:{{ p.telefono }}">{{ p.telefono }}</a>{% else %}—{% endif %}</td>
+                  <td>{% if p.in_attesa %}<span class="cb-tag">pagamento in corso fino alle {{ p.scade_il|time:"H:i" }}</span>{% else %}{% with r=p.da_incassare %}{% if r %}<b>{{ r|floatformat:"-2" }} €</b>{% elif r == 0 %}<span class="cb-muted">saldata</span>{% else %}—{% endif %}{% endwith %}{% endif %}</td>
+                  <td class="cb-note">{{ p.note|default:"" }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p class="cb-muted cb-vuoto">Nessuna prenotazione su questo gommone.</p>
+        {% endif %}
+      </section>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

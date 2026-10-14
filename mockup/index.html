@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Escursioni a Tavolara e Molara — partenza da Cala Brandinchi, San Teodoro</title>
-<meta name="description" content="Escursioni in gommone a Tavolara, Molara e Molarotto con partenza diretta dalla spiaggia di Cala Brandinchi. Massimo 12 persone, skipper e carburante inclusi. Prenoti online con acconto del 30%.">
+<meta name="description" content="Escursioni in gommone a Tavolara, Molara e Capo Coda Cavallo con partenza e rientro a Cala Brandinchi. Uscita del mattino (5 ore, 80 €) o del pomeriggio (4 ore, 70 €), 12 posti più lo skipper. Dal 1° maggio al 30 settembre.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=3">
+<link rel="stylesheet" href="assets/css/style.css?v=11">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -23,14 +23,8 @@
 <header class="header" id="header">
   <div class="wrap header__inner">
     <a class="marchio" href="/" aria-label="Cala Brandinchi Escursioni — home">
-      <svg class="marchio__glifo" width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <path d="M4 22c2.2 0 2.2 2 4.4 2s2.2-2 4.4-2 2.2 2 4.4 2 2.2-2 4.4-2 2.2 2 4.4 2 2.2-2 4-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M6 18.5 14.5 6l4.2 6.2 2.4-2.2 4.9 8.5H6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-      </svg>
-      <span class="marchio__testo">
-        <span class="marchio__nome">Cala Brandinchi</span>
-        <span class="marchio__claim">Escursioni · Tavolara</span>
-      </span>
+      <img class="marchio__logo marchio__logo--chiaro" src="assets/img/logo-bianco.png" width="720" height="236" alt="Cala Brandinchi Escursioni">
+      <img class="marchio__logo marchio__logo--scuro" src="assets/img/logo-blu.png" width="720" height="236" alt="" aria-hidden="true">
     </a>
 
     <nav class="nav" aria-label="Principale">
@@ -43,11 +37,6 @@
     </nav>
 
     <div class="header__azioni">
-      <div class="lingue" role="group" aria-label="Lingua">
-        <button type="button" aria-current="true">IT</button>
-        <button type="button">EN</button>
-        <button type="button">DE</button>
-      </div>
       <a class="btn btn--primario" href="#prenota">Prenota ora</a>
       <button class="burger" id="burger" aria-label="Apri il menu" aria-expanded="false"><span></span></button>
     </div>
@@ -62,7 +51,6 @@
   <a href="#faq">Domande</a>
   <a href="#contatti">Contatti</a>
   <a class="btn btn--primario btn--large" href="#prenota">Prenota ora</a>
-  <div class="menu-mobile__lingue"><span>IT</span><span>EN</span><span>DE</span></div>
 </div>
 
 <main id="contenuto">
@@ -72,7 +60,7 @@
      ===================================================================== -->
 <section class="hero" id="prenota">
   <div class="hero__media">
-    <img src="assets/img/hero-brandinchi.jpg" alt="La laguna di Cala Brandinchi con Tavolara all’orizzonte" fetchpriority="high">
+    <img src="assets/img/hero-tavolara-gommoni.jpg" alt="I nostri gommoni all’ancora nell’acqua turchese sotto Tavolara" fetchpriority="high">
   </div>
   <div class="hero__velo"></div>
 
@@ -80,7 +68,7 @@
     <div class="hero__testo">
       <span class="occhiello occhiello--chiaro">Area Marina Protetta di Tavolara</span>
       <h1>Escursioni in gommone<br>a <em>Tavolara e Molara</em></h1>
-      <p class="hero__sub">Si parte dalla spiaggia di Cala Brandinchi, con Molarotto e le piscine di Molara nella stessa uscita. Massimo 12 persone a bordo, skipper e carburante inclusi.</p>
+      <p class="hero__sub">Si parte e si rientra a Cala Brandinchi: in mezzo Tavolara, Molara e Capo Coda Cavallo. Uscita al mattino o al pomeriggio, 12 posti a bordo più lo skipper.</p>
     </div>
 
     <!-- Widget di ricerca: in produzione interroga il calendario disponibilità -->
@@ -89,14 +77,29 @@
         <div class="campo">
           <label for="f-esc">Escursione</label>
           <select id="f-esc" name="escursione">
-            <option>Escursione a Tavolara e Molara</option>
-            <option>Gommone in esclusiva</option>
+            <option value="mattino">Mattino · 8:30 · 5 ore · 80 €</option>
+            <option value="pomeriggio">Pomeriggio · 14:00 · 4 ore · 70 €</option>
           </select>
           <svg class="campo__chev" width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="m1 1.5 5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </div>
-        <div class="campo">
-          <label for="f-data">Data</label>
-          <input type="date" id="f-data" name="data">
+        <!-- Calendario su misura al posto di <input type="date">: il picker nativo
+             gestisce male min/max fuori dal mese corrente e cambia da browser a browser.
+             In produzione i giorni pieni arriveranno disabilitati da /api/disponibilita/. -->
+        <div class="campo campo--data">
+          <label for="f-data-btn">Data</label>
+          <button type="button" class="campo__valore" id="f-data-btn" aria-haspopup="dialog" aria-expanded="false" aria-controls="calendario"></button>
+          <input type="hidden" id="f-data" name="data">
+          <svg class="campo__chev" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M2.4 6.5h11.2M5.5 1.8v2.4M10.5 1.8v2.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <div class="calendario" id="calendario" role="dialog" aria-label="Scegli la data" hidden>
+            <div class="calendario__testa">
+              <button type="button" class="calendario__nav" id="calPrec" aria-label="Mese precedente"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m12.5 4-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <strong id="calMese" aria-live="polite"></strong>
+              <button type="button" class="calendario__nav" id="calSucc" aria-label="Mese successivo"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m7.5 4 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <div class="calendario__sett" aria-hidden="true"><span>L</span><span>M</span><span>M</span><span>G</span><span>V</span><span>S</span><span>D</span></div>
+            <div class="calendario__griglia" id="calGriglia"></div>
+            <p class="calendario__nota">Uscite dal 1° maggio al 30 settembre</p>
+          </div>
         </div>
         <div class="campo">
           <label for="f-pax">Persone</label>
@@ -107,7 +110,12 @@
             <option>4 persone</option>
             <option>5 persone</option>
             <option>6 persone</option>
-            <option>7 o più</option>
+            <option>7 persone</option>
+            <option>8 persone</option>
+            <option>9 persone</option>
+            <option>10 persone</option>
+            <option>11 persone</option>
+            <option>12 persone</option>
           </select>
           <svg class="campo__chev" width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="m1 1.5 5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </div>
@@ -117,11 +125,10 @@
       </form>
 
       <div class="esito" id="esito" aria-live="polite">
-        <p class="esito__titolo">Partenze disponibili <span id="esitoData"></span></p>
+        <p class="esito__titolo">Posti liberi <span id="esitoData"></span></p>
         <div class="slot">
-          <button type="button">09:30 — 6 posti</button>
-          <button type="button">14:30 — 2 posti</button>
-          <button type="button" disabled>17:30 — esaurita</button>
+          <button type="button" data-uscita="mattino">Mattino 8:30 — 7 posti su 12</button>
+          <button type="button" data-uscita="pomeriggio">Pomeriggio 14:00 — 3 posti su 12</button>
         </div>
       </div>
 
@@ -146,7 +153,7 @@
         </span>
         <div>
           <b>Imbarco in spiaggia</b>
-          <p>Niente porti né trasferimenti: sali direttamente da Cala Brandinchi.</p>
+          <p>Niente porti né trasferimenti: si parte e si rientra a Cala Brandinchi.</p>
         </div>
       </div>
       <div class="fiducia__voce" data-reveal>
@@ -154,7 +161,7 @@
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="8.5" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 18c0-3 2.5-4.6 5.5-4.6S14 15 14 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M15 6.2a2.8 2.8 0 0 1 0 5.4M16.4 13.8c2.2.5 3.6 1.9 3.6 4.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </span>
         <div>
-          <b>Massimo 12 persone</b>
+          <b>12 posti più lo skipper</b>
           <p>Gruppi piccoli, soste vere, nessuna fila per scendere in acqua.</p>
         </div>
       </div>
@@ -163,8 +170,8 @@
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3v9M6 12h10c-.6 3.4-2.7 5.6-5 6.6-2.3-1-4.4-3.2-5-6.6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 6.5h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </span>
         <div>
-          <b>Skipper e carburante inclusi</b>
-          <p>Il prezzo che vedi è quello che paghi. Nessun extra a sorpresa.</p>
+          <b>Skipper sempre a bordo</b>
+          <p>Alla guida c’è sempre un membro del nostro staff. Il prezzo che vedi è quello che paghi.</p>
         </div>
       </div>
       <div class="fiducia__voce" data-reveal>
@@ -188,48 +195,48 @@
     <div class="testata testata--riga" data-reveal>
       <div>
         <span class="occhiello">Le uscite in mare</span>
-        <h2 style="margin-top:16px">Due modi di salire a bordo</h2>
+        <h2 style="margin-top:16px">Due uscite<br>ogni giorno</h2>
       </div>
-      <p class="lead" style="max-width:38ch">Si parte sempre dalla spiaggia di Cala Brandinchi, da maggio a metà ottobre. Bambini sotto i 4 anni gratis.</p>
+      <p class="lead" style="max-width:38ch">Al mattino o al pomeriggio, dal 1° maggio al 30 settembre. Partenza e rientro alla spiaggia di Cala Brandinchi, 12 posti per gommone più lo skipper.</p>
     </div>
 
     <div class="griglia-esc">
 
       <article class="esc" data-reveal>
         <div class="esc__media">
-          <img src="assets/img/tavolara-01.jpg" alt="Tavolara vista dalle rocce con mare turchese" loading="lazy">
-          <span class="esc__tag esc__tag--caldo">Partenze ogni giorno</span>
+          <img src="assets/img/uscita-mattino.jpg" alt="Sosta bagno sotto la parete di Tavolara" loading="lazy">
+          <span class="esc__tag esc__tag--caldo">La più lunga</span>
         </div>
         <div class="esc__corpo">
-          <h3>Escursione a Tavolara e Molara</h3>
-          <p>Il giro che tutti ricordano: costeggiamo la parete sud di Tavolara, sosta bagno a Spalmatore di Terra, le acque basse davanti a Molara e rientro da Punta Coda Cavallo. Maschere e attrezzatura da snorkeling a bordo.</p>
+          <h3>Uscita del mattino</h3>
+          <p>Cinque ore tra Tavolara, Molara e Capo Coda Cavallo, con il mare ancora calmo e le calette più tranquille. Partenza e rientro a Cala Brandinchi.</p>
           <ul class="esc__meta">
-            <li>Mezza giornata</li><li>Partenze 09:30 e 14:30</li><li>2 soste bagno</li><li>Max 12 persone</li>
+            <li>Partenza 8:30</li><li>5 ore</li><li>12 posti + skipper</li>
           </ul>
           <div class="esc__piede">
-            <span class="prezzo"><small>da</small><b>65 €</b><span>a persona</span></span>
-            <a class="btn btn--scuro" href="#prenota">Prenota</a>
+            <span class="prezzo"><b>80 €</b><span>a persona</span></span>
+            <a class="btn btn--scuro" href="#prenota" data-uscita="mattino">Prenota</a>
           </div>
         </div>
       </article>
 
       <article class="esc" data-reveal>
         <div class="esc__media">
-          <img src="assets/img/punta-molara.jpg" alt="Acque basse e trasparenti davanti a Tavolara" loading="lazy">
-          <span class="esc__tag">Su misura</span>
+          <img src="assets/img/uscita-pomeriggio.jpg" alt="Gommoni in navigazione verso Tavolara nel pomeriggio" loading="lazy">
         </div>
         <div class="esc__corpo">
-          <h3>Gommone in esclusiva</h3>
-          <p>Lo stesso mare, ma il gommone è solo vostro. Fino a 12 persone, sempre con skipper a bordo: orari, soste e durata li decidete voi, anche mezza giornata o giornata intera.</p>
+          <h3>Uscita del pomeriggio</h3>
+          <p>Quattro ore sulla stessa rotta: Tavolara, Molara e Capo Coda Cavallo con la luce del pomeriggio. Partenza e rientro a Cala Brandinchi.</p>
           <ul class="esc__meta">
-            <li>Mezza o intera giornata</li><li>Skipper e carburante inclusi</li><li>Fino a 12 persone</li>
+            <li>Partenza 14:00</li><li>4 ore</li><li>12 posti + skipper</li>
           </ul>
           <div class="esc__piede">
-            <span class="prezzo"><small>da</small><b>450 €</b><span>a gommone</span></span>
-            <a class="btn btn--ghost" href="#esclusiva">Scopri</a>
+            <span class="prezzo"><b>70 €</b><span>a persona</span></span>
+            <a class="btn btn--scuro" href="#prenota" data-uscita="pomeriggio">Prenota</a>
           </div>
         </div>
       </article>
+
 
     </div>
   </div>
@@ -243,34 +250,34 @@
     <div class="testata" data-reveal>
       <span class="occhiello occhiello--chiaro">La rotta</span>
       <h2>Dove ti portiamo</h2>
-      <p class="lead">Navighiamo dentro l’Area Marina Protetta: cinque tappe in un raggio di poche miglia, tutte raggiungibili solo dal mare.</p>
+      <p class="lead">Si parte e si rientra a Cala Brandinchi. In mezzo l’Area Marina Protetta: Tavolara, Molara, Capo Coda Cavallo e calette raggiungibili solo dal mare.</p>
     </div>
 
     <ol class="tappe">
       <li class="tappa" data-reveal>
         <span class="tappa__n">01</span>
         <h3>Cala Brandinchi</h3>
-        <p>Imbarco dalla battigia, fondale basso e sabbia bianca. La "piccola Tahiti".</p>
+        <p>Partenza dalla spiaggia dello stabilimento: fondale basso e sabbia bianca.</p>
       </li>
       <li class="tappa" data-reveal>
         <span class="tappa__n">02</span>
-        <h3>Punta Coda Cavallo</h3>
-        <p>Il promontorio di granito che separa le due baie, con i suoi fondali chiari.</p>
+        <h3>Capo Coda Cavallo</h3>
+        <p>Il promontorio di granito con i suoi fondali chiari e le calette nascoste.</p>
       </li>
       <li class="tappa" data-reveal>
         <span class="tappa__n">03</span>
-        <h3>Spalmatore di Terra</h3>
-        <p>La lingua di sabbia di Tavolara sotto la parete calcarea. Prima sosta bagno.</p>
+        <h3>Tavolara</h3>
+        <p>L’isola simbolo dell’Area Marina Protetta, con la sua parete calcarea a picco sul mare.</p>
       </li>
       <li class="tappa" data-reveal>
         <span class="tappa__n">04</span>
-        <h3>Piscine di Molara</h3>
-        <p>Acqua bassissima e trasparente tra Molara e la costa. Snorkeling facile.</p>
+        <h3>Molara</h3>
+        <p>Le piscine naturali: acqua bassissima e trasparente, perfetta per lo snorkeling.</p>
       </li>
       <li class="tappa" data-reveal>
         <span class="tappa__n">05</span>
-        <h3>Molarotto</h3>
-        <p>Lo scoglio rosa colonia dei mufloni marini: si costeggia, non si sbarca.</p>
+        <h3>Rientro a Cala Brandinchi</h3>
+        <p>Si torna in spiaggia, dove ti aspettano docce, bar e ombrellone.</p>
       </li>
     </ol>
 
@@ -287,22 +294,22 @@
 <section class="sezione" id="esclusiva">
   <div class="wrap split">
     <div class="split__media" data-reveal>
-      <img src="assets/img/punta-molara.jpg" alt="Acque basse e trasparenti davanti a Tavolara" loading="lazy">
+      <img src="assets/img/esclusiva-molara.jpg" alt="Un gruppo a bordo del gommone lungo la costa di Molara" loading="lazy">
       <div class="badge-prezzo">
-        <small>Gommone intero, da</small>
-        <b>450 €</b>
+        <small>Gommone intero</small>
+        <b>Su richiesta</b>
       </div>
     </div>
     <div class="split__testo" data-reveal>
       <span class="occhiello">In esclusiva</span>
       <h2>Il gommone tutto per voi</h2>
-      <p class="lead">Famiglie, gruppi di amici, anniversari. Stessa rotta, ma decidete voi orari, soste e musica. Sempre con skipper a bordo — non noleggiamo senza conducente.</p>
+      <p class="lead">Famiglie, gruppi di amici, anniversari: il gommone è solo vostro. Alla guida c’è sempre uno skipper del nostro staff — non noleggiamo senza conducente. Il prezzo si concorda insieme: scrivici e ti rispondiamo in giornata.</p>
       <ul class="lista-check">
-        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8.5 3.2 3.2L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Fino a 12 persone, skipper e carburante inclusi</li>
-        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8.5 3.2 3.2L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Mezza giornata o giornata intera, orario su misura</li>
-        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8.5 3.2 3.2L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Aperitivo, pranzo o torta su richiesta</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8.5 3.2 3.2L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Fino a 12 persone, più lo skipper</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8.5 3.2 3.2L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Orari e durata da concordare</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8.5 3.2 3.2L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Partenza e rientro a Cala Brandinchi, dal 1° maggio al 30 settembre</li>
       </ul>
-      <a class="btn btn--primario btn--large" href="#contatti">Richiedi un preventivo</a>
+      <a class="btn btn--primario btn--large" href="#contatti">Contattaci per il prezzo</a>
     </div>
   </div>
 </section>
@@ -313,7 +320,7 @@
 <section class="sezione base" id="base">
   <div class="wrap split split--invertito">
     <div class="split__media" data-reveal>
-      <img src="assets/img/brandinchi-03.jpg" alt="La spiaggia di Cala Brandinchi con Tavolara all’orizzonte" loading="lazy">
+      <img src="assets/img/cala-brandinchi-alto.jpg" alt="Cala Brandinchi vista dall’alto, con Tavolara all’orizzonte" loading="lazy">
     </div>
     <div class="split__testo" data-reveal>
       <span class="occhiello">La base</span>
@@ -321,7 +328,7 @@
       <p class="lead">Lo stabilimento balneare di Cala Brandinchi è casa nostra da anni. Arrivi, parcheggi, lasci le tue cose sotto l’ombrellone e sali in gommone. Al rientro trovi docce, bar e il tuo lettino ad aspettarti.</p>
       <div class="numeri">
         <div><b>10 min</b><span>dal centro di San Teodoro</span></div>
-        <div><b>Mag–Ott</b><span>stagione operativa</span></div>
+        <div><b>Mag–Set</b><span>stagione operativa</span></div>
         <div><b>4<span class="vir">,</span>8/5</b><span>media recensioni</span></div>
       </div>
       <a class="link-freccia" href="#" style="margin-top:8px">Prenota anche ombrellone e lettino</a>
@@ -343,16 +350,13 @@
     </div>
 
     <div class="galleria__griglia" data-reveal>
-      <figure class="g-a video-card">
-        <img src="assets/img/tavolara-sud.jpg" alt="Video dell’escursione a Tavolara">
-        <span class="video-card__play">
-          <i><svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor" aria-hidden="true"><path d="M13 8 0 16V0z"/></svg></i>
-          Guarda il video — 1:40
-        </span>
-      </figure>
-      <figure class="g-b"><img src="assets/img/hero-tavolara.jpg" alt="Il profilo di Tavolara con la luce del tramonto" loading="lazy"></figure>
-      <figure class="g-c"><img src="assets/img/molara-03.jpg" alt="Panorama su Molara e Molarotto" loading="lazy"></figure>
-      <figure class="g-d"><img src="assets/img/molara-isola.jpg" alt="La costa granitica dell’isola di Molara" loading="lazy"></figure>
+      <figure class="g-a"><button type="button" class="galleria__apri" aria-label="Ingrandisci la foto"><img src="assets/img/galleria-navigazione.jpg" alt="Il gommone in navigazione verso Tavolara" loading="lazy"></button></figure>
+      <figure class="g-b"><button type="button" class="galleria__apri" aria-label="Ingrandisci la foto"><img src="assets/img/galleria-grotta.jpg" alt="I gommoni davanti alla grotta nella parete di Tavolara" loading="lazy" style="object-position:50% 92%"></button></figure>
+      <figure class="g-c"><button type="button" class="galleria__apri" aria-label="Ingrandisci la foto"><img src="assets/img/galleria-piscine.jpg" alt="Due gommoni dall’alto nelle piscine naturali" loading="lazy"></button></figure>
+      <figure class="g-d"><button type="button" class="galleria__apri" aria-label="Ingrandisci la foto"><img src="assets/img/galleria-arco.jpg" alt="L’arco di granito rosa sulla costa" loading="lazy" style="object-position:50% 60%"></button></figure>
+      <figure class="g-c"><button type="button" class="galleria__apri" aria-label="Ingrandisci la foto"><img src="assets/img/galleria-delfino.jpg" alt="Un delfino accanto ai gommoni" loading="lazy" style="object-position:50% 78%"></button></figure>
+      <figure class="g-d"><button type="button" class="galleria__apri" aria-label="Ingrandisci la foto"><img src="assets/img/galleria-scia.jpg" alt="Il gommone in scia con Tavolara sullo sfondo" loading="lazy" style="object-position:50% 70%"></button></figure>
+      <figure class="g-b"><button type="button" class="galleria__apri" aria-label="Ingrandisci la foto"><img src="assets/img/galleria-tavolara-lontano.jpg" alt="Navigazione verso Tavolara nel blu" loading="lazy" style="object-position:50% 72%"></button></figure>
     </div>
   </div>
 </section>
@@ -393,7 +397,6 @@
         <figcaption><b>Familie Weber</b>Settembre 2026 · Escursione di gruppo</figcaption>
       </figure>
     </div>
-    <p style="margin-top:22px;font-size:.75rem;color:var(--fumo)">Testi dimostrativi: in produzione il blocco legge le recensioni reali dal profilo Google Business.</p>
   </div>
 </section>
 
@@ -424,7 +427,7 @@
       </details>
       <details>
         <summary>Dove si parte e dove parcheggio? <i>+</i></summary>
-        <p>Si parte dalla spiaggia di Cala Brandinchi, davanti allo stabilimento. Il parcheggio è a pochi passi dall’imbarco. Ti chiediamo di arrivare 20 minuti prima della partenza.</p>
+        <p>Si parte e si rientra alla spiaggia di Cala Brandinchi, davanti allo stabilimento. Il parcheggio è a pochi passi dall’imbarco. Ti chiediamo di arrivare 20 minuti prima della partenza.</p>
       </details>
       <details>
         <summary>Cosa devo portare? <i>+</i></summary>
@@ -446,7 +449,7 @@
     <div data-reveal>
       <span class="occhiello">Contatti</span>
       <h2 style="margin:16px 0 18px">Ci trovi sulla spiaggia tutti i giorni</h2>
-      <p class="lead">Da maggio a metà ottobre siamo operativi ogni giorno. Per gruppi, eventi o richieste particolari scrivici: rispondiamo in giornata.</p>
+      <p class="lead">Dal 1° maggio al 30 settembre siamo operativi ogni giorno. Per il gommone in esclusiva, gruppi o richieste particolari scrivici: rispondiamo in giornata.</p>
 
       <div class="info-lista">
         <div>
@@ -486,22 +489,16 @@
     <div class="footer__top">
       <div class="footer__marchio">
         <a class="marchio" href="/">
-          <svg class="marchio__glifo" width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <path d="M4 22c2.2 0 2.2 2 4.4 2s2.2-2 4.4-2 2.2 2 4.4 2 2.2-2 4.4-2 2.2 2 4.4 2 2.2-2 4-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-            <path d="M6 18.5 14.5 6l4.2 6.2 2.4-2.2 4.9 8.5H6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-          </svg>
-          <span class="marchio__testo">
-            <span class="marchio__nome">Cala Brandinchi</span>
-            <span class="marchio__claim">Escursioni · Tavolara</span>
-          </span>
+          <img class="marchio__logo marchio__logo--chiaro" src="assets/img/logo-bianco.png" width="720" height="236" alt="Cala Brandinchi Escursioni">
         </a>
-        <p>Escursioni in gommone nell’Area Marina Protetta di Tavolara, Molara e Punta Coda Cavallo, con partenza dalla spiaggia di Cala Brandinchi.</p>
+        <p>Escursioni in gommone nell’Area Marina Protetta di Tavolara, Molara e Capo Coda Cavallo, con partenza e rientro a Cala Brandinchi.</p>
       </div>
 
       <div>
         <h4>Escursioni</h4>
         <ul>
-          <li><a href="#escursioni">Escursione a Tavolara e Molara</a></li>
+          <li><a href="#escursioni">Uscita del mattino</a></li>
+          <li><a href="#escursioni">Uscita del pomeriggio</a></li>
           <li><a href="#esclusiva">Gommone in esclusiva</a></li>
           <li><a href="#rotta">La rotta</a></li>
           <li><a href="#prenota">Prenota online</a></li>
@@ -529,7 +526,7 @@
 
     <div class="footer__basso">
       <span>© <span data-anno>2026</span> — Ragione sociale da definire · P.IVA 00000000000</span>
-      <span>Mockup homepage · foto placeholder da sostituire con il materiale dello studio</span>
+      <span>Mockup homepage · foto del cliente</span>
     </div>
   </div>
 </footer>
@@ -539,10 +536,27 @@
 </a>
 
 <div class="barra-mobile" id="barraMobile">
-  <span class="prezzo"><small>da</small><b>65 €</b><span>a persona</span></span>
+  <span class="prezzo"><small>da</small><b>70 €</b><span>a persona</span></span>
   <a class="btn btn--primario" href="#prenota">Vedi disponibilità</a>
 </div>
 
-<script src="assets/js/main.js?v=3"></script>
+<!-- Lightbox galleria: si apre al clic su una foto, frecce/tastiera/swipe per scorrere -->
+<dialog class="lightbox" id="lightbox" aria-label="Galleria fotografica">
+  <figure class="lightbox__figura">
+    <img class="lightbox__img" id="lightboxImg" alt="">
+    <figcaption class="lightbox__didascalia"><span id="lightboxTesto"></span><span class="lightbox__conta" id="lightboxConta"></span></figcaption>
+  </figure>
+  <button type="button" class="lightbox__btn lightbox__chiudi" id="lightboxChiudi" aria-label="Chiudi">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="m4 4 10 10M14 4 4 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+  </button>
+  <button type="button" class="lightbox__btn lightbox__freccia lightbox__freccia--prec" id="lightboxPrec" aria-label="Foto precedente">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m12.5 4-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <button type="button" class="lightbox__btn lightbox__freccia lightbox__freccia--succ" id="lightboxSucc" aria-label="Foto successiva">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m7.5 4 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+</dialog>
+
+<script src="assets/js/main.js?v=7"></script>
 </body>
 </html>

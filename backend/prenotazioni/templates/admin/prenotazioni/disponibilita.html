@@ -1,0 +1,22 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+<div class="cb-pagina">
+  <div class="cb-barra-strumenti">
+    <div class="cb-nav-mese">
+      <a class="cb-btn cb-btn--icona" href="?mese={{ mese_prec }}" aria-label="Mese precedente"><span class="material-symbols-outlined">chevron_left</span></a>
+      <h2 class="cb-titolo">{{ titolo_mese }}</h2>
+      <a class="cb-btn cb-btn--icona" href="?mese={{ mese_succ }}" aria-label="Mese successivo"><span class="material-symbols-outlined">chevron_right</span></a>
+      <a class="cb-btn" href="?mese={{ mese_oggi }}">Torna alla stagione</a>
+    </div>
+    <div class="cb-legenda">
+      <span><i class="cb-pallino cb-pallino--libera"></i>posti liberi</span>
+      <span><i class="cb-pallino cb-pallino--quasi"></i>quasi pieno</span>
+      <span><i class="cb-pallino cb-pallino--piena"></i>completo</span>
+      <span><i class="cb-pallino cb-pallino--chiusa"></i>chiuso</span>
+    </div>
+  </div>
+  <p class="cb-muted cb-aiuto">Clicca un'uscita per vedere chi c'è su ogni gommone e aggiungere prenotazioni. «Max N insieme» è il gruppo più grande che entra ancora su un solo gommone.</p>
+  {% include "admin/prenotazioni/_griglia.html" %}
+</div>
+{% endblock %}

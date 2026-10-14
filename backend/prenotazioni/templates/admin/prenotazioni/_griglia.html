@@ -1,0 +1,49 @@
+{# Righe del calendario: un giorno per riga, una colonna per uscita. Serve "righe" e "fasce". #}
+<div class="cb-griglia-wrap">
+  <table class="cb-griglia">
+    <thead>
+      <tr>
+        <th class="cb-col-giorno">Giorno</th>
+        {% for f in fasce %}<th>{{ f.nome }} <span class="cb-muted">{{ f.orario }}</span></th>{% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in righe %}
+        <tr class="{% if r.oggi %}cb-oggi{% endif %}{% if r.passato %} cb-passato{% endif %}{% if r.weekend %} cb-weekend{% endif %}">
+          <th class="cb-col-giorno">
+            <span class="cb-giorno-sett">{{ r.giorno_sett }}</span>
+            <span class="cb-giorno-num">{{ r.giorno|date:"j" }}</span>
+            {% if r.oggi %}<span class="cb-tag cb-tag--primary">oggi</span>{% endif %}
+            {% if r.fuori_stagione %}<span class="cb-tag">fuori stagione</span>{% endif %}
+          </th>
+          {% for u in r.uscite %}
+            <td>
+              <a class="cb-cella cb-cella--{% if r.fuori_stagione and not u.stato.n_prenotazioni %}fuori{% else %}{{ u.stato.livello }}{% endif %}" href="{{ u.url }}">
+                <span class="cb-cella-testa">
+                  {% if r.fuori_stagione and not u.stato.n_prenotazioni %}
+                    <b>Fuori stagione</b>
+                  {% elif u.stato.chiusa %}
+                    <b>Chiusa</b>{% if u.stato.motivo_chiusura %}<span class="cb-muted"> · {{ u.stato.motivo_chiusura }}</span>{% endif %}
+                  {% elif u.stato.max_persone == 0 %}
+                    <b>Completa</b>
+                  {% else %}
+                    <b>{{ u.stato.posti_liberi }} liber{{ u.stato.posti_liberi|pluralize:"o,i" }}</b>
+                    {% if u.stato.max_persone < u.stato.posti_liberi %}<span class="cb-muted"> · max {{ u.stato.max_persone }} insieme</span>{% endif %}
+                  {% endif %}
+                  {% if u.stato.n_prenotazioni %}<span class="cb-conta" title="Prenotazioni">{{ u.stato.n_prenotazioni }}</span>{% endif %}
+                </span>
+                {% for g in u.stato.gommoni %}
+                  <span class="cb-barra-riga" title="{{ g.gommone.nome }}: {{ g.occupati }}/{{ g.capienza }}">
+                    <span class="cb-barra-nome">{{ g.gommone.nome }}</span>
+                    <span class="cb-barra{% if g.chiuso %} cb-barra--chiusa{% endif %}"><i style="width: {{ g.percentuale }}%"{% if g.sovraccarico %} class="cb-sovra"{% endif %}></i></span>
+                    <span class="cb-barra-num">{% if g.chiuso %}chiuso{% elif g.esclusiva %}esclusiva{% else %}{{ g.occupati }}/{{ g.capienza }}{% endif %}</span>
+                  </span>
+                {% endfor %}
+              </a>
+            </td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
